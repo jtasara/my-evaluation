@@ -1,18 +1,4 @@
-// your code goes here ...
-const tasks = [{
-  age: 12,
-  relationship: 'child',
-  smoker: false
-},{
-  age: 65,
-  relationship: 'grandparent',
-  smoker: false
-}];
-
-console.log('Server running!');
-
 const getValueInput = () =>{
-  // const inputValue1 = document.querySelector("#domTextElement1").value;
   const inputValueAge = document.querySelector("#age").value;
   
   const selectValueRel = document.querySelector("#rel").value;
@@ -37,46 +23,53 @@ const getValueInput = () =>{
     document.querySelector("#relErr").innerHTML = "";
   }
 
-  console.log(chkSmoker.checked);
   if (chkSmoker.checked ? smoker = "yes" : smoker = "no")
 
-  document.querySelector("#output").innerHTML = `Age: ${inputValueAge}; Relationship: ${selectValueRel}; smoker? ${smoker}.`;
+  document.querySelector("#output").innerHTML = `Age: ${inputValueAge}\nRelationship: ${selectValueRel}\nSmoker? ${smoker}.`;
 };
 
-// const getValueInput = () =>{
-//   let inputValue1 = document.querySelector(".add").value;
-//   console.log(inputValue1)
-//   // let inputValue2 = document.querySelector("#domTextElement2").value; 
-//   // document.querySelector("#valueInput").innerHTML = `First input value: ${inputValue1} Second Input Value: ${inputValue2}`;
-//   // document.querySelector("#log").innerHTML = `First input value: ${inputValue1}`
-// };
+ const formElement = document.querySelector('form#form')
 
-// function logSubmit() {
-//   console.log(log)
-//   // age.textContent = `Age: ${e}`
-//   log.textContent = `Add people ${log}`;
-//   // e.preventDefault();
-// }
+ // convert the form to JSON
+ const getFormJSON = (form) => {
+   const data = new FormData(form);
+   return Array.from(data.keys()).reduce((result, key) => {
+     if (result[key]) {
+       result[key] = data.getAll(key)
+       return result
+     }
+     result[key] = data.get(key);
+     return result;
+   }, {});
+ };
 
-// const form = document.querySelector('form');
-// const log = document.querySelector('#log');
+ // handle the form event, check validity, convert form to JSON
+ const handler = (event) => {
+   event.preventDefault();
+   const valid = formElement.reportValidity();
+   if (valid) {
+     const result = getFormJSON(formElement);
+     const isSmoker = !!(result.isSmoker && result.isSmoker === 'on')
 
-// const age = document.querySelector('#age').addEventListener('change', function(e) {
-//   console.log(e.target.value);
-//   form.addEventListener('submit', logSubmit(e.target.value));
-// });
-// form.addEventListener('submit', logSubmit(age));
+     // use spread
+     const output = {
+       ...result,
+       isSmoker
+     }
+     console.log(output)
 
-// function GetSelectedValue(){
-//   var e = document.getElementById("country");
-//   var result = e.options[e.selectedIndex].value;
-  
-//   document.getElementById("result").innerHTML = result;
-// }
+     console.log(JSON.stringify(output, undefined, 2));
 
-// function GetSelectedText(){
-//   var e = document.getElementById("country");
-//   var result = e.options[e.selectedIndex].text;
-  
-//   document.getElementById("result").innerHTML = result;
-// }
+     const age = output.age;
+     const rel = output.rel;
+     const smoker = output.isSmoker;
+
+    //  document.querySelector("#debug").innerHTML = `age: ${age}\nRelationship: ${rel}\nSmoker: ${smoker}`;
+
+     document.querySelector("#debug").innerHTML = JSON.stringify(output, undefined, 2);
+   }
+   document.querySelector("form").reset();
+   document.querySelector("#output").innerHTML = "";
+ }
+
+ formElement.addEventListener("submit", handler)

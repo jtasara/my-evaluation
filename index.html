@@ -8,7 +8,7 @@
                 font-family: monospace;
                 border: 1px solid black;
                 padding: 10px;
-                display: none;
+                display: block;
             }
             span {
                 color: red;
@@ -19,7 +19,7 @@
         <h1>Household builder</h1>
         <div class="builder">
             <ol class="household"></ol>
-            <form>
+            <form id="form" method="post">
                 <div>
                     <label for="age">Age
                         <input type="text" name="age" id="age"/><span id="ageErr" class="required"></span>
@@ -40,21 +40,20 @@
                 </div>
                 <div>
                     <label for="smoker">Smoker?
-                        <input type="checkbox" name="smoker" id="smoker" />
+                        <input type="checkbox" name="isSmoker" id="smoker" />
                     </label>
                 </div>
                 <div>
                     <button type="button" class="add" onclick="getValueInput()">add</button>
                 </div>
+                <pre id="output"></pre>
                 <div>
                     <button type="submit">submit</button>
                 </div>
             </form>
         </div>
-
-        <p id="output"></p>
         
-        <pre class="debug"></pre>
+        <pre class="debug" id="debug"></pre>
 
         <script src="./index.js"></script>
 
