@@ -1,77 +1,26 @@
-body {
-  margin: 0;
-  background-color: hsl(0, 0%, 98%);
-  color: #333;
-  font: 100% / normal sans-serif;
+span {
+  color: red;
 }
-
-/* main {
-  margin: 0 auto;
-  padding: 4rem 0;
-  width: 90%;
-  max-width: 60rem;
-} */
-
-form {
-  box-sizing: border-box;
-  margin: auto;
-  padding: 2rem;
-  border-radius: 0.2rem;
-  background-color: hsl(0, 0%, 100%);
-  border: 1px solid hsl(0, 0%, 20%);
-  /* display: grid; */
-  display:inline-flexbox;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+input[type=text] {
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0,06);
+  margin: 10px 0;
+  padding: 5px;
 }
-
-.full-width {
-  grid-column: span 2;
+input:required + span::after {
+  content: "Required";
 }
-
-legend,
-fieldset,
-select,
-textarea,
-input,
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-input,
-select,
-textarea {
-  border: 2px solid #333;
-  background-color: white;
-  border-radius: 0.25rem;
-}
-
-input[type="text"],
-input[type="email"],
-select,
-textarea {
-  font: 1.25rem / 1.5 sans-serif;
+label {
   display: block;
-  box-sizing: border-box;
-  width: 50%;
-  padding: 0.5rem 0.75rem;
 }
-textarea {
-  min-height: 10rem;
+select {
+  border-radius: 5px;
+  padding: 5px;
+  width: 30%;
 }
-input[type="radio"] {
-  border-radius: 10%;
+button {
+  margin: 1px;
 }
-input[type="radio"]:checked {
-  background-image: radial-gradient(
-    hsl(213, 73%, 50%) 40%,
-    transparent calc(40% + 1px)
-  );
+.round-input {
+  border-radius: 10px;
+  padding: 10px;
 }

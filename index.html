@@ -10,33 +10,8 @@
                 padding: 10px;
                 display: block;
             }
-            span {
-                color: red;
-            }
-            input[type=text] {
-                box-shadow: 0 0 15px 4px rgba(0,0,0,0,06);
-                margin: 10px 0;
-                padding: 5px;
-            }
-            input:required + span::after {
-                content: "Required";
-            }
-            label {
-                display: block;
-            }
-            select {
-                border-radius: 5px;
-                padding: 5px;
-                width: 30%;
-            }
-            button {
-                margin: 1px;
-            }
-            .round-input {
-                border-radius: 10px;
-                padding: 10px;
-            }
         </style>
+        <link rel="stylesheet" href="index.css" />
     </head>
     <body>
         <h1>Household builder</h1>
@@ -45,6 +20,9 @@
             <form id="form" method="post">
                 <div>
                     <label for="age">Age
+                        <span class="required">
+                            (required)
+                          </span>
                         <input type="text" name="age" id="age"/><span id="ageErr" class="required"></span>
                     </label>
                 </div>
