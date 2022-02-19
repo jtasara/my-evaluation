@@ -5,6 +5,7 @@ const getValueInput = () =>{
   const chkSmoker = document.querySelector("#smoker");
   let smoker = '';
 
+  // Validate data entry (age is required and > 0, relationship is required)
   if ((inputValueAge == "")) { 
     document.querySelector("#ageErr").innerHTML = "Please enter your age";
     return false;
@@ -43,7 +44,7 @@ const getValueInput = () =>{
    }, {});
  };
 
- // handle the form event, check validity, convert form to JSON
+ // handle the form event and convert form to JSON
  const handler = (event) => {
    event.preventDefault();
    const valid = formElement.reportValidity();
