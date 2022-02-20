@@ -10,10 +10,10 @@
         <div class="builder">
             <ol class="household"></ol>
             <form id="form" method="post">
-                <div class="control">
+                <!-- <div class="control">
                     <label for="name">Full name </label>
                     <input id="name" maxlength="20" type="text" />
-                </div>
+                </div> -->
                 <div class="control">
                     <label for="age">Age</label>
                     <span class="required"></span>
@@ -38,10 +38,13 @@
                 <div>
                     <button type="button" class="add" onclick="getValueInput()">add</button>
                 </div>
-                <pre id="output"></pre>
+                <div>
+                    <button type="reset">Reset</button>
+                </div>
                 <div>
                     <button type="submit">submit</button>
                 </div>
+                <pre id="output"></pre>
             </form>
         </div>
         
