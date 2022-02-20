@@ -1,4 +1,40 @@
-span {
+.debug {
+  font-family: monospace;
+  border: 1px solid black;
+  padding: 10px;
+  display: block;
+}
+.control {
+  margin: 0;
+  padding: 0.2em 0 0.2em 0;
+}
+label{
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 6px;
+  text-align: right;
+  width: 150px;
+  vertical-align: top;
+}
+input{
+  font-size: inherit;
+}
+button {
+  width:6em;
+  margin:0 0 0 15%;
+}
+select {
+  border-radius: 1px;
+  padding: 5px 0 5px 0px;
+  width: 175px;
+}
+input[type=checkbox], input[type=radio] {
+  vertical-align: middle;
+  position: relative;
+  top: 4px;
+  padding: 2em;
+}
+/* span {
   color: red;
 }
 input[type=text] {
@@ -23,4 +59,4 @@ button {
 .round-input {
   border-radius: 10px;
   padding: 10px;
-}
+} */
