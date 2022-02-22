@@ -8,38 +8,33 @@ console.log('See above');
 const ageEl = document.querySelector('#age');
 const relationshipEl = document.querySelector("#rel");
 const smokerEl = document.querySelector("#smoker");
-//   let smoker = '';
-
-//   if (chkSmoker.checked ? smoker = "yes" : smoker = "no")
-
-//   document.querySelector("#output").innerHTML = `Age: ${inputValueAge}\nRelationship: ${selectValueRel}\nSmoker? ${smoker}.`;
-
+const smoker = '';
 
   if (button) {
+    button.parentElement.setAttribute('data-interactive', '');
+    button.removeAttribute('hidden');
     button.addEventListener('click', (e) => {
       e.preventDefault();
 
       // validate fields
       let isAgeValid = checkAge();
       let isRelationshipValid = checkRelationship();
-      let isSmokerValid = checkSmoker();
-      console.log(isSmokerValid);
+      let isSmoker = checkSmoker();
+      const age = isAgeValid && ageEl.value;
+      const relationship = isRelationshipValid && relationshipEl.value;
+      const smoker = isSmoker ? 'yes' : 'no';
 
       let isFormValid = isAgeValid && isRelationshipValid;
-
-      // document.querySelector("#output").textContent = `Age: ${isAgeValid}\n`; //Relationship: ${relationship}\nSmoker? ${smokerChecked}.`;
       // submit to the server if the form is valid
       if (isFormValid) {
-
+        document.querySelector("#output").textContent = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
       }
     });
 
     const checkAge = () => {
       let valid = false;
-
       const min = 1;
       const max = 100;
-  
       const age = ageEl.value.trim();
   
       if (!isRequired(age)) {
@@ -67,15 +62,12 @@ const smokerEl = document.querySelector("#smoker");
     };
 
     const checkSmoker = () => {
-      let valid = false;
-      let smoker = '';
+      let smoker = false;
       const smokerChecked = smokerEl.checked;
-
-      if (smokerChecked ? smoker = "yes" : smoker = "no")
-      valid = true;
+      if (smokerChecked) { smoker = true }
+      return smoker;
     }
   };
-
 
   const isRequired = value => value === '' ? false : true;
   const isBetween = (age, min, max) => age < min || age > max ? false : true;
