@@ -5,7 +5,7 @@
   display: block;
 }
 .builder {  
-  width: 520px;
+  width: 660px;
   border: 1px solid;
   display: grid;
   padding: 0 0 1em 0;
@@ -43,7 +43,18 @@ input[type=checkbox], input[type=radio] {
   top: 4px;
   padding: 2em;
 }
+#nameError {
+  display: none;
+  font-size: 1em;
+}
 
+#nameError.visible {
+  display: inline;
+}
+
+input.invalid {
+  border-color: red;
+}
 /* span {
   color: red;
 }

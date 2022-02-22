@@ -5,19 +5,49 @@
         <title>Household builder</title>
         <link rel="stylesheet" href="index.css" />
     </head>
+    <style>
+        :root {
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+}
+        small {
+            font-family: monospace;
+            padding: 10px;
+        }
+        .control {
+    margin-bottom: 5px;
+
+}
+
+.control input:focus {
+    outline: none;
+}
+
+.control.error input {
+    border-color: var(--error-color);
+}
+
+.control.success input {
+    border-color: var(--success-color);
+}
+
+
+.control small {
+    color: var(--error-color);
+}
+
+    </style>
     <body>
         <h1>Household builder</h1>
         <div class="builder">
             <ol class="household"></ol>
             <form id="form" method="post">
-                <!-- <div class="control">
-                    <label for="name">Full name </label>
-                    <input id="name" maxlength="20" type="text" />
-                </div> -->
                 <div class="control">
                     <label for="age">Age</label>
-                    <span class="required"></span>
-                    <input type="text" name="age" id="age" class="required"/><span id="ageErr"></span>
+                    <input type="text" name="age" id="age" class="required"/>
+                    <span id="ageErr"></span>
+                    <small></small>
                 </div>
                 <div>
                     <label for="rel">Relationship</label>
@@ -36,7 +66,8 @@
                     <input type="checkbox" name="isSmoker" id="smoker" />
                 </div>
                 <div>
-                    <button type="button" class="add" onclick="getValueInput()">add</button>
+                    <!-- <button type="button" class="add" onclick="getValueInput()">add</button> -->
+                    <button type="button" class="add">add</button>
                 </div>
                 <div>
                     <button type="reset">Reset</button>
