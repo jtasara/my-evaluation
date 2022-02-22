@@ -4,40 +4,16 @@
         <meta charset="utf-8">
         <title>Household builder</title>
         <link rel="stylesheet" href="index.css" />
+        <style>
+            .debug {
+                font-family: monospace;
+                border: 1px solid black;
+                padding: 10px;
+                display: block;
+            }
+        </style>
     </head>
-    <style>
-        :root {
-    --error-color: #dc3545;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-}
-        small {
-            font-family: monospace;
-            padding: 10px;
-        }
-        .control {
-    margin-bottom: 5px;
 
-}
-
-.control input:focus {
-    outline: none;
-}
-
-.control.error input {
-    border-color: var(--error-color);
-}
-
-.control.success input {
-    border-color: var(--success-color);
-}
-
-
-.control small {
-    color: var(--error-color);
-}
-
-    </style>
     <body>
         <h1>Household builder</h1>
         <div class="builder">
@@ -75,7 +51,7 @@
                 <div>
                     <button type="submit">submit</button>
                 </div>
-                <pre id="output">Output:</pre>
+                <pre id="output"></pre>
             </form>
         </div>
         
