@@ -103,9 +103,7 @@ const formElement = document.querySelector('form#form');
      const rel = output.rel;
      const smoker = output.isSmoker;
 
-     document.querySelector("#debug").innerHTML = `age: ${age}\nRelationship: ${rel}\nSmoker: ${smoker}`;
-
-     document.querySelector("#debug").innerHTML = JSON.stringify(output, undefined, 2);
+    //  document.querySelector("#debug").textContent = JSON.stringify(output, undefined, 2);
    }
    document.querySelector("form").reset();
    document.querySelector("#output").innerHTML = "";
