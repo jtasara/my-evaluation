@@ -4,10 +4,11 @@ const ageEl = document.querySelector('#age');
 const relationshipEl = document.querySelector("#rel");
 const smokerEl = document.querySelector("#smoker");
 const smoker = '';
+let listT = document.querySelector('#people');
+
+let list = [];
 
 if (button) {
-  button.parentElement.setAttribute('data-interactive', '');
-  button.removeAttribute('hidden');
   button.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -20,9 +21,27 @@ if (button) {
     const smoker = isSmoker ? 'yes' : 'no';
 
     let isFormValid = isAgeValid && isRelationshipValid;
-    // submit to the server if the form is valid
+
+    // To submit to the server if the form is valid
     if (isFormValid) {
-      document.querySelector("#output").textContent = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
+      // document.querySelector("#output").textContent = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
+      let entry = document.createElement('li');
+      entry.appendChild(document.createTextNode(`Age: ${age};\nRelationship: ${relationship}; Smoker? ${smoker}.`));
+      listT.appendChild(entry);
+
+      let addAge = age;
+      let addRelationship = relationship;
+      let addSmoker = smoker;
+
+      const person = {
+        age: addAge,
+        relationship: addRelationship,
+        smoker: addSmoker
+      };
+
+      list.push(person);
+      console.log(list);
+      localStorage.setItem('list', JSON.stringify(list));
     }
   });
 
@@ -69,43 +88,13 @@ const isBetween = (age, min, max) => age < min || age > max ? false : true;
 
 const formElement = document.querySelector('form#form');
 
- // convert the form to JSON
- const getFormJSON = (form) => {
-   const data = new FormData(form);
-   return Array.from(data.keys()).reduce((result, key) => {
-     if (result[key]) {
-       result[key] = data.getAll(key)
-       return result
-     }
-     result[key] = data.get(key);
-     return result;
-   }, {});
- };
+const handler = (e) => {
+  e.preventDefault();
 
- const handler = (e) => {
-   e.preventDefault();
-   console.log("To start for submit")
-   const valid = formElement.reportValidity();
-   if (valid) {
-     const result = getFormJSON(formElement);
-     const isSmoker = !!(result.isSmoker && result.isSmoker === 'on')
+  const server = localStorage.list;
+  console.log('JSON Serialization: ', server);
 
-     // use spread
-     const output = {
-       ...result,
-       isSmoker
-     }
-     console.log(output)
-
-     console.log(JSON.stringify(output, undefined, 2));
-
-     const age = output.age;
-     const rel = output.rel;
-     const smoker = output.isSmoker;
-
-    //  document.querySelector("#debug").textContent = JSON.stringify(output, undefined, 2);
-   }
-   document.querySelector("form").reset();
-   document.querySelector("#output").innerHTML = "";
- }
-  formElement.addEventListener("submit", handler);
+  document.querySelector("form").reset();
+  document.querySelector("#people").innerHTML = "";
+}
+formElement.addEventListener("submit", handler);
