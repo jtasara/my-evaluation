@@ -26,7 +26,7 @@ if (button) {
     if (isFormValid) {
       // document.querySelector("#output").textContent = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
       let entry = document.createElement('li');
-      entry.appendChild(document.createTextNode(`Age: ${age};\nRelationship: ${relationship}; Smoker? ${smoker}.`));
+      entry.appendChild(document.createTextNode(`Age: ${age}; Relationship: ${relationship}; Smoker? ${smoker}.`));
       listT.appendChild(entry);
 
       let addAge = age;
@@ -34,6 +34,7 @@ if (button) {
       let addSmoker = smoker;
 
       const person = {
+        id: Math.random().toString(),
         age: addAge,
         relationship: addRelationship,
         smoker: addSmoker
