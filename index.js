@@ -24,7 +24,7 @@ if (button) {
 
     // To submit to the server if the form is valid
     if (isFormValid) {
-      // document.querySelector("#output").textContent = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
+      // document.querySelector("#output").innerHTML = `Age: ${age}\nRelationship: ${relationship}\nSmoker? ${smoker}.`;
       let entry = document.createElement('li');
       entry.appendChild(document.createTextNode(`Age: ${age}; Relationship: ${relationship}; Smoker? ${smoker}.`));
       listT.appendChild(entry);
@@ -42,7 +42,7 @@ if (button) {
 
       list.push(person);
       console.log(list);
-      localStorage.setItem('list', JSON.stringify(list));
+      localStorage.setItem('list', JSON.stringify(list, null, 2));
     }
   });
 
@@ -94,7 +94,7 @@ const handler = (e) => {
 
   const server = localStorage.list;
   console.log('JSON Serialization: ', server);
-
+  document.querySelector("#debug").innerHTML = server;
   document.querySelector("form").reset();
   document.querySelector("#people").innerHTML = "";
 }
