@@ -36,4 +36,17 @@ input[type=checkbox], input[type=radio] {
   top: 4px;
   padding: 2em;
 }
+.btn-remove {
+  background-color: white;
+  border: 0.5px;
+  color: black;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-remove:hover {
+  background-color: RoyalBlue;
+  color: white;
+}
 
